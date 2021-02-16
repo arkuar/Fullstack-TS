@@ -3,7 +3,7 @@ type Result = "Very severely underweight" | "Severely underweight"
   | "Overweight" | "Obese Class I (Moderately obese)"
   | "Obese Class II (Severely obese)" | "Obese Class III (Very severely obese)"
 
-function calculateBmi(height: number, weight: number): Result {
+export function calculateBmi(height: number, weight: number): Result {
   const bmi = weight / Math.pow(height / 100, 2)
   if (bmi < 15) {
     return "Very severely underweight"
