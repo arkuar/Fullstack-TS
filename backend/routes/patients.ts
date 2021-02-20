@@ -1,6 +1,7 @@
 import express from 'express';
 import patientService from '../services/patientService';
-import toNewPatientEntry from '../utils';
+import { NewEntry } from '../types';
+import { toNewPatientEntry, toNewEntry } from '../utils';
 
 const router = express.Router();
 
@@ -26,6 +27,23 @@ router.get('/:id', (req, res) => {
   if (patient) {
     res.send(patient);
   } else{
+    res.sendStatus(404);
+  }
+});
+
+router.post('/:id/entries', (req, res) => {
+  const patient = patientService.findById(req.params.id);
+
+  if (patient) {
+    try {
+      const newEntry: NewEntry = toNewEntry(req.body);
+      const updatedPatient = patientService.addEntryToPatient(patient, newEntry);
+      res.send(updatedPatient);
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      res.status(400).send(error.message);
+    }
+  } else {
     res.sendStatus(404);
   }
 });

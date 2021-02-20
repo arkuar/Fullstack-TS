@@ -38,7 +38,7 @@ const EntryDetails: React.FC<PatientEntryProps> = ({ entry }) => {
                 {...entry}
             >
                 {diagnoseList}
-            </OccupationalHealthcareEntry>
+            </OccupationalHealthcareEntry>;
     }
 };
 

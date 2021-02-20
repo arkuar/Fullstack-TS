@@ -44,8 +44,19 @@ interface OccupationalHealthcareEntry extends BaseEntry {
   sickLeave?: {
     startDate: string;
     endDate: string;
-  }
+  };
 }
+
+export type NewHospitalEntry = Omit<HospitalEntry, 'id'>;
+
+export type NewOccupationalHealthcareEntry = Omit<OccupationalHealthcareEntry, 'id'>;
+
+export type NewHealthCheckEntry = Omit<HealthCheckEntry, 'id'>;
+
+export type NewEntry = NewHospitalEntry
+  | NewOccupationalHealthcareEntry
+  | NewHealthCheckEntry;
+
 
 export type Entry =
   | HospitalEntry

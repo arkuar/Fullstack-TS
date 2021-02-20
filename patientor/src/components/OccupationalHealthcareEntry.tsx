@@ -8,7 +8,7 @@ interface OccupationalEntryProps {
     sickLeave?: {
         startDate: string;
         endDate: string;
-    }
+    };
 }
 
 const OccupationalHealthcareEntry: React.FC<OccupationalEntryProps> = ({ date, description, employerName, sickLeave, children }) => {
@@ -28,8 +28,8 @@ const OccupationalHealthcareEntry: React.FC<OccupationalEntryProps> = ({ date, d
                 </Item.Content>
             </Item>
         </Segment>
-    )
+    );
 
-}
+};
 
 export default OccupationalHealthcareEntry;

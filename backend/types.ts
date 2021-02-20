@@ -20,6 +20,7 @@ interface BaseEntry {
   date: string;
   specialist: string;
   diagnosisCodes?: Array<Diagnosis['code']>;
+  type: EntryType;
 }
 
 export enum HealthCheckRating {
@@ -28,6 +29,10 @@ export enum HealthCheckRating {
   "HighRisk" = 2,
   "CriticalRisk" = 3
 }
+
+export type EntryType = "Hospital" 
+| "HealthCheck"
+| "OccupationalHealthcare";
 
 interface HealthCheckEntry extends BaseEntry {
   type: "HealthCheck";
@@ -56,6 +61,18 @@ export type Entry =
   | OccupationalHealthcareEntry
   | HealthCheckEntry;
 
+type NewHospitalEntry = Omit<HospitalEntry, 'id'>;
+
+type NewOccupationalHealthcareEntry = Omit<OccupationalHealthcareEntry, 'id'>;
+
+type NewHealthCheckEntry = Omit<HealthCheckEntry, 'id'>;
+
+export type NewEntry = NewHospitalEntry
+  | NewOccupationalHealthcareEntry
+  | NewHealthCheckEntry;
+
+export type NewBaseEntry = Omit<BaseEntry, 'id'>;
+
 export interface Patient {
   id: string;
   name: string;
@@ -65,5 +82,3 @@ export interface Patient {
   occupation: string;
   entries: Entry[]
 }
-
-export type PublicPatient = Omit<Patient, 'ssn' | 'entries'>;
