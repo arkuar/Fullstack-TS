@@ -18,6 +18,12 @@ interface BaseEntry {
   diagnosisCodes?: Array<Diagnosis['code']>;
 }
 
+export type NewBaseEntry = Omit<BaseEntry, 'id'>;
+
+export type EntryType = "Hospital"
+  | "HealthCheck"
+  | "OccupationalHealthcare";
+
 export enum HealthCheckRating {
   "Healthy" = 0,
   "LowRisk" = 1,

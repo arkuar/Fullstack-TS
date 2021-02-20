@@ -19,7 +19,7 @@ const HospitalEntry: React.FC<HospitalEntryProps> = ({ date, description, discha
                     <Item.Header>{date} <Icon name="hospital symbol" /></Item.Header>
                     <Item.Description>{description}</Item.Description>
                     <Item.Extra>
-                        <p>Discharge: {discharge.date}, criteria: {discharge.date}</p>
+                        <p>Discharge: {discharge.date}, criteria: {discharge.criteria}</p>
                         {children}
                     </Item.Extra>
                 </Item.Content>
